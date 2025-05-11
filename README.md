@@ -1,103 +1,101 @@
-# School Vaccination Portal Documentation
+# School Vaccination Portal
 
-## 1. System Overview
-
-The **School Vaccination Portal** is a full-stack web application designed to streamline the management of student vaccination records in schools. It enables administrators to:
-
-- Add/manage student data
-- Schedule vaccination drives
-- Track student vaccination status
-- Generate reports
-- Export data in CSV, Excel, or PDF formats
-
-The system supports authentication simulation and offers interactive dashboards for better decision-making.
+A full-stack web application for managing and tracking student vaccinations in a school environment. It enables school coordinators to schedule vaccination drives, manage student records, track vaccination statuses, and generate reports.
 
 ---
 
-## 2. Full Application Architecture
+## Features
 
-### Architecture Layers
-
-- **Frontend (React.js):**
-  - Components for login, dashboard, student management, drives, and reports
-  - Communicates with backend using Axios
-  - Styled using CSS
-
-- **Backend (Node.js + Express):**
-  - RESTful API server
-  - Business logic and data processing
-  - CSV parsing and file handling
-
-- **Database (MongoDB):**
-  - Stores student records, vaccination data, and drive information
-
-### Data Flow
-
-1. **Frontend** sends requests to **Backend APIs**
-2. Backend fetches or stores data in **MongoDB**
-3. Data is returned and rendered in the frontend
+- Simulated login for school coordinator
+- Dashboard with metrics and upcoming drives
+- Add/edit individual student details
+- Bulk import students using CSV
+- Schedule/manage vaccination drives
+- Mark students as vaccinated per drive
+- Filterable, paginated vaccination reports
+- CSV report download support
 
 ---
 
-## 3. Frontend-Backend Interaction
+## How to Run the Application
 
-| Action | Frontend Trigger | Backend API | Response |
-|-------|-------------------|-------------|----------|
-| Login | Button click | `/login` (mock) | Success (mock user object) |
-| View Dashboard | Component mount | `/dashboard/summary` | JSON summary |
-| Add Student | Form submit | `/students` (POST) | Student object |
-| Upload CSV | File input | `/students/upload` | Import status |
-| Create Drive | Form submit | `/drives` (POST) | Drive object |
-| View Reports | Filters applied | `/reports` | Paginated report data |
+### Prerequisites
+
+- Node.js and npm installed
+- Internet connection
 
 ---
 
-## 4. API Endpoints (Postman)
+### Backend Setup
 
-You can test and explore all APIs using Postman.
+1. Navigate to the backend folder:
 
-### Postman Collection:
+cd backend
 
-**[Download Postman Collection](#)** (replace with real link if hosted)
+2. Install dependencies:
 
-### Sample Endpoints:
+npm install
 
-#### 📘 Students
+3. Create a `.env` file:
 
-- `GET /students` — List all students (with filters)
-- `POST /students` — Add new student
-- `PUT /students/:id` — Update student
-- `DELETE /students/:id` — Delete student
-- `POST /students/upload` — Bulk upload CSV
-- `POST /students/:id/vaccinate` — Mark vaccinated
+MONGO_URI=mongodb://localhost:27017/school_vaccine
 
-#### Drives
+4. Start the backend server:
 
-- `GET /drives` — List drives
-- `POST /drives` — Create drive
-- `PUT /drives/:id` — Edit drive
+npm run dev
 
-#### Reports
+5. Backend runs at:
 
-- `GET /reports` — Filtered reports
-- `GET /reports/download` — Download CSV
+http://localhost:5001
 
 ---
 
-## 5. Database Schema
+### Frontend Setup
 
-### Students
+1. Open a new terminal and go to the frontend folder:
 
-```json
-{
-  "_id": "ObjectId",
-  "name": "string",
-  "class": "string",
-  "studentId": "string",
-  "vaccinations": [
-    {
-      "vaccineName": "string",
-      "date": "Date"
-    }
-  ]
-}
+cd frontend
+
+2. Install dependencies:
+
+npm install
+
+3. Start the React app:
+
+npm start
+
+4. Frontend runs at:
+
+http://localhost:3000
+
+---
+
+## Key Learnings
+
+- Full-stack app structure with React + Node.js
+- MongoDB schema design with Mongoose
+- REST API development with validation
+- Real-world workflows (vaccination logic, scheduling)
+- File uploads with Multer and CSV parsing
+- Frontend routing and state handling in React
+- Report filtering, pagination, and CSV export
+
+---
+
+## Simulated Login
+
+- Username: `admin`
+- No password required
+- Used only to simulate coordinator access
+
+---
+
+## Sample User Stories Covered
+
+- View dashboard with student and drive metrics
+- Add/manage students individually or in bulk
+- Schedule new vaccination drives
+- Vaccinate students using a drive dropdown
+- Generate and export vaccination reports
+
+---
