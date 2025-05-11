@@ -36,15 +36,11 @@ cd backend
 
 npm install
 
-3. Create a `.env` file:
-
-MONGO_URI=mongodb://localhost:27017/school_vaccine
-
-4. Start the backend server:
+3. Start the backend server:
 
 npm run dev
 
-5. Backend runs at:
+4. Backend runs at:
 
 http://localhost:5001
 
